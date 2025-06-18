@@ -13,7 +13,10 @@ with tab1:
 
 with tab2:
     st.subheader("AI Legal Assistant")
-    st.info("Ask questions about heirs’ property, title issues, and stability strategies.")
+    st.info(
+        "Ask questions about heirs’ property, title issues, "
+        "and stability strategies."
+    )
     user_input = st.text_input("Ask me anything:")
     if user_input:
         st.write(f"🔍 You asked: {user_input}")
