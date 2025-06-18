@@ -41,6 +41,31 @@ Redline Revealer is a civic tech platform powered by Streamlit, Azure AI, and Po
 
 ---
 
+## 📂 Folder Structure
+
+To keep the repo clean and organized, follow this structure when adding files:
+
+```
+redline-revealer/
+├── assets/                    # App images, icons, logos, etc.
+├── data/                      # All datasets
+│   ├── housing/               # Housing data (Excel, CSVs, etc.)
+│   └── maps/                  # GIS/GeoJSON/map files
+├── docs/                      # General documentation
+│   ├── roles/                 # Individual team role documentation
+│   └── housing-risk-analysis.md  # Deep dives or explanatory writeups
+├── src/                       # Source code for the Streamlit app
+├── .github/workflows/         # CI/CD workflows
+├── requirements.txt           # Dependencies
+├── README.md                  # Project overview
+├── CONTRIBUTING.md            # This file
+└── LICENSE                    # MIT License
+```
+
+📌 **Note**: Do not create new README files. All high-level information belongs in `README.md`. Additional insights can be added to `/docs/`.
+
+---
+
 ## 🧪 Running Tests
 > _CI workflows will auto-run tests on pull requests (setup in `.github/workflows/ci.yml`)._
 
@@ -100,5 +125,6 @@ We believe in inclusivity and psychological safety. Please review our [Code of C
 
 ---
 
-Thanks for helping us build something meaningful!
+Thanks for helping us build something meaningful!  
 – The Redline Revealer Team
+
