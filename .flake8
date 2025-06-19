@@ -1,0 +1,3 @@
+[flake8]
+exclude = .env.example
+max-line-length = 88
