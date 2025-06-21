@@ -7,33 +7,35 @@ This module is rendered as the 'About Us' tab in the main Streamlit app.
 import streamlit as st
 
 
-def render():
-    st.title("About Redline Revealer")
+def render(L):
+    st.title(L.get("about_title", "About Redline Revealer"))
 
     # 🚨 Project Overview
-    st.subheader("🧭 What Problem Are We Solving?")
+    st.subheader(L.get("problem_header", "🧭 What Problem Are We Solving?"))
     st.markdown(
+        L.get("project_description",
         """
     **Redline Revealer** is a civic-tech tool built for the Microsoft x Women in Cloud AI Hackathon.  
     We use AI and Azure Maps to detect historical redlining and visualize modern housing instability,  
     helping communities identify systemic risk and take action through data-driven advocacy.
-    """
+    """)
     )
 
     # 🔐 RAI Commitments
-    st.subheader("🔐 Responsible AI (RAI) Commitments")
+    st.subheader(L.get("rai_header", "🔐 Responsible AI (RAI) Commitments"))
     st.markdown(
+        L.get("rai_commitments",
         """
     - ✅ **Fairness** – Identifies historic racial bias without reinforcing it  
     - 🛡️ **Reliability** – Includes fallback logic if AI responses fail  
     - 🔒 **Privacy** – No user data is stored; API keys are secured  
     - 🌍 **Inclusiveness** – Accessible layout with contrast-aware visuals  
     - 📋 **Accountability** – All changes tracked in GitHub  
-    """
+    """)
     )
 
     # 👩🏽‍💻 Meet the Team
-    st.subheader("👩🏽‍💻 Meet the Team")
+    st.subheader(L.get("team_header", "👩🏽‍💻 Meet the Team"))
     team = [
         {
             "name": "Portia Jefferson",
@@ -67,7 +69,7 @@ def render():
             try:
                 st.image(person["img"], use_container_width=True)
             except Exception:
-                st.warning(f"Image not found: {person['img']}")
+                st.warning(L.get("image_not_found", f"Image not found: {person['img']}"))
         with col2:
             st.markdown(f"**{person['name']}** – *{person['role']}*\n\n{person['bio']}")
         st.markdown("---")
