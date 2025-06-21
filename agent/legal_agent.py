@@ -7,22 +7,33 @@ about heirs' property laws.
 import os
 import json
 import re
+from typing import Optional
 from dotenv import load_dotenv
 from openai import AzureOpenAI
 from langchain_community.vectorstores import FAISS
 from langchain_openai import AzureChatOpenAI, AzureOpenAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains.question_answering import load_qa_chain
+from pydantic.types import SecretStr
 from utils.state_list import US_STATES
 
 load_dotenv()
 
 # Set up OpenAI client
-client = AzureOpenAI(
-    api_key=os.getenv("AZURE_OPENAI_KEY"),
-    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-)
+try:
+    azure_key = os.getenv("AZURE_OPENAI_KEY")
+    if azure_key:
+        client = AzureOpenAI(
+            api_key=azure_key,
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION") or "2023-12-01-preview",
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT") or "",
+        )
+    else:
+        print("Warning: AZURE_OPENAI_KEY not found in environment variables")
+        client = None
+except Exception as e:
+    print(f"Warning: Could not initialize Azure OpenAI client: {e}")
+    client = None
 
 # Load public blob links for source documents
 with open(os.path.join("data", "source_links.json"), "r") as f:
@@ -64,27 +75,56 @@ def extract_state(question):
 
 
 # Setup RAG (FAISS + LangChain)
-embedding_model = AzureOpenAIEmbeddings(
-    azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT"),
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_key=os.getenv("AZURE_OPENAI_KEY"),
-    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-)
-vectorstore = FAISS.load_local(
-    "data/indexes/legal_docs_index",
-    embeddings=embedding_model,
-    allow_dangerous_deserialization=True,
-)
-print(f"✅ Loaded FAISS index with {vectorstore.index.ntotal} documents")
+try:
+    azure_key = os.getenv("AZURE_OPENAI_KEY")
+    if azure_key:
+        embedding_model = AzureOpenAIEmbeddings(
+            azure_deployment=os.getenv("AZURE_OPENAI_EMBEDDING_DEPLOYMENT") or "",
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT") or "",
+            api_key=SecretStr(azure_key),
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION") or "2023-12-01-preview",
+        )
+    else:
+        print("Warning: AZURE_OPENAI_KEY not found for embeddings")
+        embedding_model = None
+    
+    # Check if the index directory exists
+    index_path = "data/indexes/legal_docs_index"
+    if embedding_model and os.path.exists(index_path):
+        vectorstore = FAISS.load_local(
+            index_path,
+            embeddings=embedding_model,
+            allow_dangerous_deserialization=True,
+        )
+        print(f"✅ Loaded FAISS index with {vectorstore.index.ntotal} documents")
+        retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
+    else:
+        if not embedding_model:
+            print("⚠️ Warning: Could not initialize embedding model")
+        else:
+            print(f"⚠️ Warning: FAISS index not found at {index_path}")
+        vectorstore = None
+        retriever = None
+except Exception as e:
+    print(f"⚠️ Warning: Could not load FAISS index: {e}")
+    vectorstore = None
+    retriever = None
 
-retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
-
-llm = AzureChatOpenAI(
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-    api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
-    api_key=os.getenv("AZURE_OPENAI_KEY"),
-    azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
-)
+try:
+    azure_key = os.getenv("AZURE_OPENAI_KEY")
+    if azure_key:
+        llm = AzureChatOpenAI(
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+            api_version=os.getenv("AZURE_OPENAI_API_VERSION"),
+            api_key=SecretStr(azure_key),
+            azure_deployment=os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT"),
+        )
+    else:
+        print("Warning: AZURE_OPENAI_KEY not found for LLM")
+        llm = None
+except Exception as e:
+    print(f"Warning: Could not initialize LLM: {e}")
+    llm = None
 
 custom_prompt_text = (
     "You are a legal assistant helping someone with a legal question.\n\n"
@@ -124,6 +164,9 @@ generic_prompt = PromptTemplate.from_template(generic_prompt_text)
 
 def get_legal_answer(question):
     try:
+        if not llm:
+            return "Azure OpenAI is not available. Please check your configuration."
+            
         state = extract_state(question)
 
         is_us_state = state is not None and any(
@@ -132,8 +175,8 @@ def get_legal_answer(question):
 
         filtered_docs = []
 
-        if is_us_state:
-            # Only retrieve documents if it's a US state
+        if is_us_state and retriever:
+            # Only retrieve documents if it's a US state and retriever is available
             docs = retriever.get_relevant_documents(question)
             for doc in docs:
                 print("[DEBUG] Retrieved doc source:", doc.metadata.get("source", ""))
@@ -146,7 +189,7 @@ def get_legal_answer(question):
                 if state and (state.lower() in content or state.lower() in source):
                     filtered_docs.append(doc)
         else:
-            # Non-US questions should skip RAG
+            # Non-US questions or no retriever should skip RAG
             filtered_docs = []
 
         # RAG path
