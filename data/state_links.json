@@ -16,7 +16,12 @@
     "unclaimed property": "https://law.justia.com/codes/alaska/title-34/chapter-45/"
   },
   "california": {
-    "property": "https://law.justia.com/codes/california/code-civ/division-2/"
+    "property in general": "https://law.justia.com/codes/california/code-civ/division-2/part-1/",
+    "real property": "https://law.justia.com/codes/california/code-civ/division-2/part-2/",
+    "immovable property": "https://law.justia.com/codes/california/code-civ/division-2/part-2/",
+    "personal property": "https://law.justia.com/codes/california/code-civ/division-2/part-3/",
+    "movable property": "https://law.justia.com/codes/california/code-civ/division-2/part-3/",
+    "acquisition of property": "https://law.justia.com/codes/california/code-civ/division-2/part-4/"
   },
   "colorado": {
     "property": "https://law.justia.com/codes/colorado/title-38/",
@@ -32,8 +37,25 @@
     "unclaimed property": "https://law.justia.com/codes/delaware/title-25/chapter-40/"
   },
   "florida": {
-    "abandoned property": "https://law.justia.com/codes/florida/2007/TitleXL/chapter705/chapter705.html",
-    "lost property": "https://law.justia.com/codes/florida/2007/TitleXL/chapter705/chapter705.html"
+    "conveyances of land": "https://law.justia.com/codes/florida/title-xl/chapter-689/",
+    "conveyances by entities": "https://law.justia.com/codes/florida/title-xl/chapter-692/",
+    "record of conveyances": "https://law.justia.com/codes/florida/title-xl/chapter-695/",
+    "mortgages": "https://law.justia.com/codes/florida/title-xl/chapter-697/",
+    "assignment and cancellation of mortgages": "https://law.justia.com/codes/florida/title-xl/chapter-701/",
+    "foreclosure": "https://law.justia.com/codes/florida/title-xl/chapter-702/",
+    "abstracts of title": "https://law.justia.com/codes/florida/title-xl/chapter-703/",
+    "easements": "https://law.justia.com/codes/florida/title-xl/chapter-704/",
+    "abandoned property": "https://law.justia.com/codes/florida/title-xl/chapter-705/",
+    "powers of attorney": "https://law.justia.com/codes/florida/title-xl/chapter-709/",
+    "transfer to minors": "https://law.justia.com/codes/florida/title-xl/chapter-710/",
+    "transfer-on-death": "https://law.justia.com/codes/florida/title-xl/chapter-711/",
+    "marketable record titles": "https://law.justia.com/codes/florida/title-xl/chapter-712/",
+    "liens": "https://law.justia.com/codes/florida/title-xl/chapter-713/",
+    "unclaimed property": "https://law.justia.com/codes/florida/title-xl/chapter-717/",
+    "condominiums": "https://law.justia.com/codes/florida/title-xl/chapter-718/",
+    "cooperatives": "https://law.justia.com/codes/florida/title-xl/chapter-719/",
+    "homeowners associations": "https://law.justia.com/codes/florida/title-xl/chapter-720/",
+    "mobile home tenancy": "https://law.justia.com/codes/florida/title-xl/chapter-723/"
   },
   "georgia": {
     "property": "https://law.justia.com/codes/georgia/title-44/",
@@ -59,8 +81,37 @@
     "lost property": "https://law.justia.com/iowa/"
   },
   "kansas": {
-    "abandoned property": "https://law.justia.com/kansas/",
-    "lost property": "https://law.justia.com/kansas/"
+    "liens on personal property": "https://law.justia.com/codes/kansas/chapter-58/article-2/",
+    "mortgages and conditional sales": "https://law.justia.com/codes/kansas/chapter-58/article-3/",
+    "property act of 1939": "https://law.justia.com/codes/kansas/chapter-58/article-5/",
+    "powers of attorney": "https://law.justia.com/codes/kansas/chapter-58/article-6/",
+    "simultaneous death law": "https://law.justia.com/codes/kansas/chapter-58/article-7/",
+    "fiduciary income": "https://law.justia.com/codes/kansas/chapter-58/article-9a/",
+    "trusts of personal property": "https://law.justia.com/codes/kansas/chapter-58/article-11/",
+    "accessibility standards": "https://law.justia.com/codes/kansas/chapter-58/article-14/",
+    "land surveys": "https://law.justia.com/codes/kansas/chapter-58/article-20/",
+    "state plane coordinate system": "https://law.justia.com/codes/kansas/chapter-58/article-20a/",
+    "land patents": "https://law.justia.com/codes/kansas/chapter-58/article-21/",
+    "conveyances of land": "https://law.justia.com/codes/kansas/chapter-58/article-22/",
+    "mortgages of real property": "https://law.justia.com/codes/kansas/chapter-58/article-23/",
+    "trusts and powers": "https://law.justia.com/codes/kansas/chapter-58/article-24/",
+    "prudent investor act": "https://law.justia.com/codes/kansas/chapter-58/article-24a/",
+    "landlords and tenants": "https://law.justia.com/codes/kansas/chapter-58/article-25/",
+    "townsites": "https://law.justia.com/codes/kansas/chapter-58/article-26/",
+    "bankruptcy": "https://law.justia.com/codes/kansas/chapter-58/article-29/",
+    "real estate brokers": "https://law.justia.com/codes/kansas/chapter-58/article-30/",
+    "broker lien act": "https://law.justia.com/codes/kansas/chapter-58/article-30a/",
+    "apartment ownership act": "https://law.justia.com/codes/kansas/chapter-58/article-31/",
+    "recreational areas": "https://law.justia.com/codes/kansas/chapter-58/article-32/",
+    "marketable record title act": "https://law.justia.com/codes/kansas/chapter-58/article-34/",
+    "relocation assistance": "https://law.justia.com/codes/kansas/chapter-58/article-35/",
+    "townhouse ownership act": "https://law.justia.com/codes/kansas/chapter-58/article-37/",
+    "easements": "https://law.justia.com/codes/kansas/chapter-58/article-38/",
+    "unclaimed property": "https://law.justia.com/codes/kansas/chapter-58/article-39/",
+    "real estate appraisers": "https://law.justia.com/codes/kansas/chapter-58/article-41/",
+    "manufactured housing": "https://law.justia.com/codes/kansas/chapter-58/article-42/",
+    "lien validity": "https://law.justia.com/codes/kansas/chapter-58/article-43/",
+    "common interest owners": "https://law.justia.com/codes/kansas/chapter-58/article-46/"
   },
   "kentucky": {
     "Title to property and restrictions on use, ownership, and alienation": "https://law.justia.com/codes/kentucky/chapter-381/",
@@ -92,12 +143,35 @@
     "lost property": "https://law.justia.com/minnesota/"
   },
   "mississippi": {
-    "abandoned property": "https://law.justia.com/mississippi/",
-    "lost property": "https://law.justia.com/mississippi/"
+    "land and conveyances": "https://law.justia.com/codes/mississippi/title-89/chapter-1/",
+    "recreational landowners liability": "https://law.justia.com/codes/mississippi/title-89/chapter-2/",
+    "acknowledgments": "https://law.justia.com/codes/mississippi/title-89/chapter-3/",
+    "recording of instruments": "https://law.justia.com/codes/mississippi/title-89/chapter-5/",
+    "coordinate system": "https://law.justia.com/codes/mississippi/title-89/chapter-6/",
+    "landlord and tenant": "https://law.justia.com/codes/mississippi/title-89/chapter-7/",
+    "residential landlord and tenant": "https://law.justia.com/codes/mississippi/title-89/chapter-8/",
+    "condominiums": "https://law.justia.com/codes/mississippi/title-89/chapter-9/",
+    "escheats": "https://law.justia.com/codes/mississippi/title-89/chapter-11/",
+    "unclaimed property": "https://law.justia.com/codes/mississippi/title-89/chapter-12/",
+    "party fences": "https://law.justia.com/codes/mississippi/title-89/chapter-13/",
+    "party walls": "https://law.justia.com/codes/mississippi/title-89/chapter-15/",
+    "salvage": "https://law.justia.com/codes/mississippi/title-89/chapter-17/",
+    "conservation easements": "https://law.justia.com/codes/mississippi/title-89/chapter-19/",
+    "disclaimer of property interests": "https://law.justia.com/codes/mississippi/title-89/chapter-21/",
+    "property disclaimer act": "https://law.justia.com/codes/mississippi/title-89/chapter-22/",
+    "environmental covenants": "https://law.justia.com/codes/mississippi/title-89/chapter-23/",
+    "rule against perpetuities": "https://law.justia.com/codes/mississippi/title-89/chapter-25/",
+    "foreign land ownership": "https://law.justia.com/codes/mississippi/title-89/chapter-27/"
   },
   "missouri": {
-    "abandoned property": "https://law.justia.com/missouri/",
-    "lost property": "https://law.justia.com/missouri/"
+    "landlord and tenant": "https://law.justia.com/codes/missouri/title-xxix/chapter-441/",
+    "titles and conveyance of real estate": "https://law.justia.com/codes/missouri/title-xxix/chapter-442/",
+    "mortgages and deeds of trust": "https://law.justia.com/codes/missouri/title-xxix/chapter-443/",
+    "rights of miners": "https://law.justia.com/codes/missouri/title-xxix/chapter-444/",
+    "plats": "https://law.justia.com/codes/missouri/title-xxix/chapter-445/",
+    "boundaries and land titles": "https://law.justia.com/codes/missouri/title-xxix/chapter-446/",
+    "lost and unclaimed property": "https://law.justia.com/codes/missouri/title-xxix/chapter-447/",
+    "condominium property": "https://law.justia.com/codes/missouri/title-xxix/chapter-448/"
   },
   "montana": {
     "abandoned property": "https://law.justia.com/montana/",
@@ -144,9 +218,18 @@
     "lost property": "https://law.justia.com/oklahoma/"
   },
   "oregon": {
-    "abandoned property": "https://law.justia.com/oregon/",
-    "lost property": "https://law.justia.com/oregon/"
-  },
+    "residential landlord and tenant": "https://law.justia.com/codes/oregon/volume-03/chapter-090/",
+    "tenancy": "https://law.justia.com/codes/oregon/volume-03/chapter-091/",
+    "conveyancing and recording": "https://law.justia.com/codes/oregon/volume-03/chapter-093/",
+    "real property development": "https://law.justia.com/codes/oregon/volume-03/chapter-094/",
+    "condominiums": "https://law.justia.com/codes/oregon/volume-03/chapter-100/",
+    "property rights": "https://law.justia.com/codes/oregon/volume-03/chapter-105/",
+    "intestate succession and wills": "https://law.justia.com/codes/oregon/volume-03/chapter-112/",
+    "administration of estates": "https://law.justia.com/codes/oregon/volume-03/chapter-114/",
+    "trusts": "https://law.justia.com/codes/oregon/volume-03/chapter-128/",
+    "uniform trust code": "https://law.justia.com/codes/oregon/volume-03/chapter-130/",
+    "powers of attorney": "https://law.justia.com/codes/oregon/volume-03/chapter-127/"
+},
   "pennsylvania": {
     "abandoned property": "https://law.justia.com/pennsylvania/",
     "lost property": "https://law.justia.com/pennsylvania/"
@@ -168,12 +251,26 @@
     "lost property": "https://law.justia.com/tennessee/"
   },
   "texas": {
-    "abandoned property": "https://law.justia.com/texas/",
-    "lost property": "https://law.justia.com/texas/"
+    "conveyances": "https://law.justia.com/codes/texas/property-code/title-2/",
+    "public records": "https://law.justia.com/codes/texas/property-code/title-3/",
+    "actions and remedies": "https://law.justia.com/codes/texas/property-code/title-4/",
+    "exempt property and liens": "https://law.justia.com/codes/texas/property-code/title-5/",
+    "unclaimed property": "https://law.justia.com/codes/texas/property-code/title-6/",
+    "condominiums": "https://law.justia.com/codes/texas/property-code/title-7/",
+    "landlord and tenant": "https://law.justia.com/codes/texas/property-code/title-8/",
+    "trusts": "https://law.justia.com/codes/texas/property-code/title-9/",
+    "disclaimer of property interests": "https://law.justia.com/codes/texas/property-code/title-13/",
+    "restrictive covenants": "https://law.justia.com/codes/texas/property-code/title-11/",
+    "miscellaneous real property interests": "https://law.justia.com/codes/texas/property-code/title-12/"
   },
   "utah": {
-    "abandoned property": "https://law.justia.com/utah/",
-    "lost property": "https://law.justia.com/utah/"
+    "private property protection": "https://law.justia.com/codes/utah/title-63l/chapter-3/",
+    "constitutional takings": "https://law.justia.com/codes/utah/title-63l/chapter-4/",
+    "religious land use": "https://law.justia.com/codes/utah/title-63l/chapter-5/",
+    "transfer of public lands": "https://law.justia.com/codes/utah/title-63l/chapter-6/",
+    "public land management": "https://law.justia.com/codes/utah/title-63l/chapter-8/",
+    "granting of real property for moderate income housing": "https://law.justia.com/codes/utah/title-63l/chapter-12/",
+    "restrictions on foreign acquisitions of land": "https://law.justia.com/codes/utah/title-63l/chapter-13/"
   },
   "vermont": {
     "abandoned property": "https://law.justia.com/vermont/",
@@ -198,9 +295,5 @@
   "wyoming": {
     "abandoned property": "https://law.justia.com/codes/wyoming/title-34/",
     "lost property": "https://law.justia.com/wyoming/"
-  },
-  "district of columbia": {
-    "abandoned property": "https://law.justia.com/district-of-columbia/",
-    "lost property": "https://law.justia.com/district-of-columbia/"
   }
 }

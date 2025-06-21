@@ -12,6 +12,7 @@ openai
 langchain
 langchain-community
 langchain-openai
+faiss-cpu
 
 # --- Azure & Cloud ---
 azure-storage-blob

@@ -11,7 +11,9 @@ from agent.legal_agent import get_legal_answer
 
 def render():
     st.title("AI Legal Assistant")
-    st.info("Ask questions about heirs’ property, title issues, or stability strategies.")
+    st.info(
+        "Ask questions about heirs’ property, title issues, or stability strategies."
+    )
 
     user_input = st.text_input("Ask me anything:")
 
