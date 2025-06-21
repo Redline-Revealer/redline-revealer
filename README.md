@@ -99,4 +99,14 @@ _Proudly aligned with Microsoft’s responsible AI vision and cloud innovation s
 
 ---
 
+## 🎥 Project Presentation
+
+Check out our visual overview of the Redline Revealer project:
+
+👉 [View Presentation on Canva](https://www.canva.com/design/DAGq1iwv94M/H3a-mLp6EU_qGU3qaSSiPQ/edit?utm_content=DAGq1iwv94M&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)
+
+This deck was created for our Microsoft x Women in Cloud AI Innovation Challenge submission and highlights our mission, features, and architecture.
+
+---
+
 _© 2025 Redline Revealer. All rights reserved._
