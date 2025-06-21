@@ -1,24 +1,7 @@
-<<<<<<< HEAD:app.py
 import streamlit as st
 from modules import welcome, map_page, assistant, about
-=======
-"""Main Streamlit App Launcher for Redline Revealer.
-
-Initializes session state and routes to modular pages: Welcome, Map, Assistant, About.
-Serves as the entry point for Streamlit execution.
-"""
-
 from ui_helpers import render_answer_block
 from prompt_handler import handle_prompt
-from pages import welcome, map, assistant, about
-import streamlit as st
-import sys
-import os
-
-# Add /src to path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
->>>>>>> de7e8fc3afaa07b13e2567664f434cb0e57d9c62:src/app.py
 
 # Configure page
 st.set_page_config(page_title="Redline Revealer", layout="wide")
