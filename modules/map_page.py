@@ -10,9 +10,9 @@ import streamlit as st
 from streamlit_folium import st_folium
 import folium
 
-def render():
+def render(L):
     st.set_page_config(layout="wide", page_title="Redlining Visualizer", page_icon="📍")
-    st.title("📍 Redlining Map Viewer")
+    st.title(L.get("map_title", "📍 Redlining Map Viewer"))
 
     @st.cache_data
     def load_data():
@@ -24,33 +24,34 @@ def render():
         for path in paths_to_try:
             if os.path.exists(path):
                 return gpd.read_file(path)
-        st.error("No redlining data found in expected paths.")
+        st.error(L.get("map_error", "No redlining data found in expected paths."))
         st.stop()
 
     holc_gdf = load_data()
 
     # Sidebar Map Option
     map_type = st.sidebar.radio(
-        "Map Provider",
-        ("Power BI (Coming Soon)", "Folium (Fallback)"),
+        L.get("map_provider", "Map Provider"),
+        (L.get("powerbi_option", "Power BI (Coming Soon)"), L.get("folium_option", "Folium (Fallback)")),
         index=0
     )
 
-    if map_type == "Power BI (Coming Soon)":
-        st.info("🚧 Power BI map will be embedded here once finalized by the data team.")
-        st.image("https://via.placeholder.com/1000x600.png?text=Power+BI+Map+Coming+Soon", caption="Power BI Visualization Placeholder")
+    if map_type == L.get("powerbi_option", "Power BI (Coming Soon)"):
+        st.info(L.get("powerbi_placeholder", "🚧 Power BI map will be embedded here once finalized by the data team."))
+        st.image("https://via.placeholder.com/1000x600.png?text=Power+BI+Map+Coming+Soon", 
+                caption=L.get("powerbi_caption", "Power BI Visualization Placeholder"))
     else:
         st_folium(create_folium_map(holc_gdf), width=1200, height=700)
 
     # Sidebar Stats
-    st.sidebar.subheader("Statistics")
+    st.sidebar.subheader(L.get("map_statistics", "Statistics"))
     if 'grade' in holc_gdf.columns:
         grade_counts = holc_gdf['grade'].value_counts()
-        st.sidebar.metric("Total Areas", len(holc_gdf))
-        st.sidebar.metric("A-Grade Areas", grade_counts.get('A', 0))
-        st.sidebar.metric("D-Grade Areas", grade_counts.get('D', 0))
+        st.sidebar.metric(L.get("total_areas", "Total Areas"), len(holc_gdf))
+        st.sidebar.metric(L.get("a_grade_areas", "A-Grade Areas"), grade_counts.get('A', 0))
+        st.sidebar.metric(L.get("d_grade_areas", "D-Grade Areas"), grade_counts.get('D', 0))
     else:
-        st.sidebar.warning("No 'grade' column found in data.")
+        st.sidebar.warning(L.get("no_grade_column", "No 'grade' column found in data."))
 
 def create_folium_map(gdf):
     """Create a Folium-based fallback map."""
