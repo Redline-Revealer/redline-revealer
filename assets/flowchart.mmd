@@ -1,0 +1,35 @@
+%%{init: {
+  'theme': 'default',
+  'themeVariables': {
+    'fontSize': '10px',
+    'nodeTextPadding': '0',
+    'primaryColor': '#ffffff',
+    'edgeLabelBackground': '#f8f8f8'
+  },
+  'flowchart': {
+    'nodeSpacing': 6,
+    'rankSpacing': 10,
+    'curve': 'basis'
+  }
+}}%%
+flowchart TD
+    A[User Question]:::highlight --> B[Extract Context Info]:::default
+    B --> C[Retrieve Top-K Docs via FAISS and Azure OpenAI Embeddings]:::default
+    C --> D[Filter Docs by Context or Generic Rules]:::default
+    D --> E{Docs Available?}:::decision
+    E -- Yes --> F[Generate Answer via LangChain QA and AzureChatOpenAI]:::highlight
+    E -- No --> G[Fallback Answer using AzureChatOpenAI]:::fallback
+    F --> H[Evaluate Answer Quality]:::default
+    G --> H
+    H --> I{Answer Valid?}:::decision
+    I -- No --> J[Retry using AzureChatOpenAI]:::fallback
+    I -- Yes --> K[Accept Answer]:::default
+    J --> K
+    K --> L[Add Source Links and Curated Reference]:::default
+    L --> M[Return Final Answer to User]:::highlight
+
+    %% Custom Styles
+    classDef highlight fill:#dbeafe,stroke:#2563eb,stroke-width:1px,color:#000;
+    classDef decision fill:#fef3c7,stroke:#f59e0b,stroke-width:1px,color:#000;
+    classDef fallback fill:#fcdcdc,stroke:#dc2626,stroke-width:1px,color:#000;
+    classDef default fill:#e2e8f0,stroke:#64748b,stroke-width:1px,color:#000;
