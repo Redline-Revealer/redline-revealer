@@ -13,6 +13,8 @@ text = {
         "tagline": "Unearthing the past. Protecting the future.",
         "tab1": "📍 Redlining Map",
         "tab2": "🧠 LLM Assistant",
+        "tab3": "👋 Welcome",
+        "tab4": "💡 About Us",
         "map_header": "Historical Redlining Visualization",
         "map_info": "Map overlay and risk scoring will appear here.",
         "assistant_header": "AI Legal Assistant",
@@ -36,6 +38,8 @@ text = {
         "tagline": "Descubriendo el pasado. Protegiendo el futuro.",
         "tab1": "📍 Mapa de Redlining",
         "tab2": "🧠 Asistente Legal IA",
+        "tab3": "👋 Bienvenida",
+        "tab4": "💡 Sobre Nosotros",
         "map_header": "Visualización Histórica del Redlining",
         "map_info": "Aquí aparecerá la superposición del mapa y la puntuación de riesgo.",
         "assistant_header": "Asistente Legal con IA",
@@ -107,10 +111,16 @@ st.title(L["title"])
 st.markdown(L["tagline"])
 
 # Tab Switcher (radio styled like tabs)
-tab_map = {"tab1": L["tab1"], "tab2": L["tab2"]}
+tab_map = {
+    "tab1": L["tab1"],
+    "tab2": L["tab2"],
+    "tab3": L["tab3"],
+    "tab4": L["tab4"]
+}
+
 active_tab = st.radio(
     label="",
-    options=["tab1", "tab2"],
+    options=list(tab_map.keys()),
     format_func=lambda x: tab_map[x],
     horizontal=True,
 )
@@ -118,63 +128,16 @@ st.session_state.active_tab = active_tab
 
 # Content for Tab 1
 if st.session_state.active_tab == "tab1":
-    st.subheader(L["map_header"])
-    st.info(L["map_info"])
+    map_page.render(L)
 
 # Content for Tab 2
 elif st.session_state.active_tab == "tab2":
-    st.subheader(L["assistant_header"])
-    st.info(L["assistant_info"])
+    assistant.render(L)
 
-    col1, col2 = st.columns([2.5, 1.5])
+# Content for Tab 3 (Welcome)
+elif st.session_state.active_tab == "tab3":
+    welcome.render(L)
 
-    with col1:
-        with st.form("question_form", clear_on_submit=True):
-            user_input = st.text_input(L["input_label"], key="user_input")
-            submitted = st.form_submit_button(L["submit"])
-
-            if submitted and user_input.strip():
-                st.session_state.submitted_question = user_input.strip()
-                st.session_state.question_source = "typed"
-                st.rerun()
-
-        if st.session_state.submitted_question:
-            st.write(f"{L['you_asked']} {st.session_state.submitted_question}")
-
-            if (
-                st.session_state.last_answer is None
-                or st.session_state.last_answer["question"]
-                != st.session_state.submitted_question
-            ):
-                with st.spinner(
-                    "Thinking..."
-                    if st.session_state.language == "English"
-                    else "Pensando..."
-                ):
-                    result = handle_prompt(st.session_state.submitted_question)
-                st.session_state.last_answer = {
-                    "question": st.session_state.submitted_question,
-                    "result": result,
-                }
-            else:
-                result = st.session_state.last_answer["result"]
-
-            render_answer_block(result)
-
-    with col2:
-        st.markdown(f"### {L['faq']}")
-        for q in L["questions"]:
-            if st.button(q):
-                st.session_state.submitted_question = q
-                st.session_state.question_source = "click"
-                st.rerun()
-
-        # Legal Disclaimer
-        st.markdown(
-            """
-        <div style='font-size: 0.9rem; color: gray; margin-top: 1em;'>
-        ⚠️ This assistant provides general information, not legal advice. Please consult a legal professional for guidance.
-        </div>
-        """,
-            unsafe_allow_html=True,
-        )
+# Content for Tab 4 (About)
+elif st.session_state.active_tab == "tab4":
+    about.render(L)
