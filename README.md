@@ -99,4 +99,7 @@ _Proudly aligned with Microsoft’s responsible AI vision and cloud innovation s
 
 ---
 
+## 🎥 Video Recording
+_Please see our Youtube video here: https://www.youtube.com/watch?v=CvH0Vnd6sqM
+
 _© 2025 Redline Revealer. All rights reserved._
