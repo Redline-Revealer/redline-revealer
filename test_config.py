@@ -60,25 +60,25 @@ def test_env_config():
     # Test basic imports
     print(f"\n🧪 Testing Module Imports...")
     try:
-        from modules.welcome import show_welcome
+        from modules import welcome
         print("✅ Welcome module import successful")
     except Exception as e:
         print(f"❌ Welcome module import failed: {e}")
         
     try:
-        from modules.about import show_about  
+        from modules import about
         print("✅ About module import successful")
     except Exception as e:
         print(f"❌ About module import failed: {e}")
         
     try:
-        from modules.assistant import show_assistant
+        from modules import assistant
         print("✅ Assistant module import successful")  
     except Exception as e:
         print(f"❌ Assistant module import failed: {e}")
         
     try:
-        from modules.map_page import show_map
+        from modules import map_page
         print("✅ Map module import successful")
     except Exception as e:
         print(f"❌ Map module import failed: {e}")
