@@ -1,10 +1,4 @@
 import streamlit as st
-import sys
-import os
-
-# Add parent directory to path to access modules
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
 from modules import welcome, map_page, assistant, about
 from ui_helpers import render_answer_block
 from prompt_handler import handle_prompt
