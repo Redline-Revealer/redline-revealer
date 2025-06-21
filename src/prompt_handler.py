@@ -26,7 +26,11 @@ def handle_prompt(user_input: str) -> dict:
     # Initialize fields
     curated_link = None
     source_info = []
-    answer = raw_response.strip()
+    if isinstance(raw_response, list):
+        # Join list elements into a string if needed
+        answer = " ".join(str(item) for item in raw_response).strip()
+    else:
+        answer = str(raw_response).strip()
 
     # Extract curated link
     if "🔗 For more info, see:" in answer:
